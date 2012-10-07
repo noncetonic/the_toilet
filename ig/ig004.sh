@@ -1,7 +1,6 @@
 if [ -z $1 ]; then
 	echo -e "\n\t[*] Read the source luke ..."
 	echo -e "Issues HEAD request to servers listed in file"
-	echo -e "{ServerIP}:{Port} file format\n\n"
 	echo -e "\n[-] bash -e ./ig004.sh ./file"
 	echo -e "[-] bash -e ./ig004.sh ./file --ssl"
 	echo -e "\n\t[*] File input should be in this format '{IP_ADDRESS}:{PORT}'\n"

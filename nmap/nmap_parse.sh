@@ -1,20 +1,20 @@
 #
 # Written by William SubINacls Coppola
-#  grep parser for nmap gnmap output
+#  Enables user to remove items from greabable files using regex from the commandline
 #    example usage: read the code below ...
-#
+#  
 #	bash -e grep_parse.sh ./testfile.gnmap | tee -a w00t	# this is with out any filtering of IP Addresses
 #	bash -e grep_parse.sh ./testfile.gnmap "" | tee -a w00t	# this is with out any filtering of IP Addresses
-#	bash -e grep_parse.sh ./testfile.gnmap "(([0-9]{1,3}\.)76 ) " | tee -a w00t.txt
-#		({[?]}) removes any IP matching "76" on the last octet, displays information to STDOUT and into w00t.txt ;)
+#	bash -e grep_parse.sh ./testfile.gnmap "(([0-9]{1,3}\.)76 ) " | tee -a w00t
+#		({[?]}) removes any IP matching "76" on the last octet, displays information to STDOUT and into w00t ;)
 #
 #         Your milage may vary - like it or hate it, it simply works
 #
 
 if [ -z $1 ]; then
 	echo -e "\n[*}{ Read the source luke... }"
-	echo -e "[*] - example: ./grep_parse.sh ./test.gnamp '(\.[7][6] \(\))' | tee -a w00t.txt"
-	echo -e "[*]\t > removes any IP matching 76 and displays and echos info into w00t.txt file\n"
+	echo -e "[*] - example: ./grep_parse.sh ./test.gnamp '(\.[7][6] \(\))' | tee -a w00t"
+	echo -e "[*]\t > removes any IP matching 76 and displays and echos info into w00t file\n"
 	sleep 3 &
 	exit
 fi
