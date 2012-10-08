@@ -1,6 +1,6 @@
 #
 
-# Use your own list of https web targets and it will test some vaerbs for http protocol to include junk
+# Use your own list of https web targets and it will test some verbs for http protocol to include junk
 # Which will reply to verbs which have no meaning in the protocol which could indicate verb tampering
 #
 #
