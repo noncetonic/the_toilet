@@ -32,7 +32,7 @@ for x in $(cat ./httpsonly); do
  echo -e $x # diagnostics
  for verbs in $(cat verbage.txt); do 
   echo -e $verbs # diagnostics
-  request=$(echo -e `echo $verbs | tr -s "\n" "," | sed -r "s/((.*)\.[0-9]),/\1\n/g" | tr -s "," " "` | ncat --ssl  -w 1 $x 443 -i 1 &)
+  request=$(echo `echo -e $verbs | tr -s "\n" "," | sed -r "s/((.*)\.[0-9]),/\1\n/g" | tr -s "," " "` | ncat --ssl  -w 1 $x 443 -i 1 &)
  case 
 # BROKEN FOR NOW - MORE TO COME  
 #  sed -r "s/(.*)/"`echo $x && echo  && echo $verbs`" - \1/g" & 
