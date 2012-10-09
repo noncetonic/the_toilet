@@ -13,17 +13,17 @@ if [ -z $1 ];then
  echo -e "[*] Basic instruction would be to include a file of https targets on $var1"
 fi
 
-if [ ! -f verbage.txt ]; then
+if [ ! -f verbage.txt ]; then # edit me to include more methods to test against
  cat << EOF > verbage.txt 
-GET / HTTP/1.0
-JUNK / HTTP/1.0
-JUNK / HTTP/1.1
-JUNK / HTTP/3.0
-HEAD / HTTP/1.0
-HEAD / HTTP/1.1
-HEAD / HTTP/2.0
-HEAD / HTTP/3.0
-OPTIONS / HTTP/1.0
+GET / HTTP/1.0     # should work fine
+JUNK / HTTP/1.0    # should break something, but will return true on some web server
+JUNK / HTTP/1.1    # ""
+JUNK / HTTP/3.0    # ""
+HEAD / HTTP/1.0    # should work fine
+HEAD / HTTP/1.1    # should work fine
+HEAD / HTTP/2.0    # potential to pass as true
+HEAD / HTTP/3.0    # should break something
+OPTIONS / HTTP/1.0 # should work fine
 EOF
 fi
 
