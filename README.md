@@ -4,7 +4,7 @@
 # by: William SubINacls Coppola
 #   "the_shit_i_make_up - or else it would be barf"
 # artwork from: http://www.ascii-art.de/ascii/t/toilets.txt
-#          "thought it was fitting for the project"
+#   "thought it was fitting for the project"
 #                           _
 #               .----------/ |<=== floppy disk
 #              /           | |
