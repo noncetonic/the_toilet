@@ -17,8 +17,8 @@ if [ ! -f verbage.txt ]; then # edit me to include more methods to test against
  cat << EOF > verbage.txt 
 GET / HTTP/1.0     # should work fine
 JUNK / HTTP/1.0    # should break something, but will return true on some web server
-JUNK / HTTP/1.1    # ""
-JUNK / HTTP/3.0    # ""
+JUNK / HTTP/1.1    # "same"
+JUNK / HTTP/3.0    # "same"
 HEAD / HTTP/1.0    # should work fine
 HEAD / HTTP/1.1    # should work fine
 HEAD / HTTP/2.0    # potential to pass as true
