@@ -15,15 +15,15 @@ fi
 
 if [ ! -f verbage.txt ]; then # edit me to include more methods to test against
  cat << EOF > verbage.txt 
-GET / HTTP/1.0     # should work fine
-JUNK / HTTP/1.0    # should break something, but will return true on some web server
-JUNK / HTTP/1.1    # "same"
-JUNK / HTTP/3.0    # "same"
-HEAD / HTTP/1.0    # should work fine
-HEAD / HTTP/1.1    # should work fine
-HEAD / HTTP/2.0    # potential to pass as true
-HEAD / HTTP/3.0    # should break something
-OPTIONS / HTTP/1.0 # should work fine
+GET / HTTP/1.0\n\n\n     # should work fine
+JUNK / HTTP/1.0\n\n\n    # should break something, but will return true on some web server
+JUNK / HTTP/1.1\n\n\n    # "same"
+JUNK / HTTP/3.0\n\n\n    # "same"
+HEAD / HTTP/1.0\n\n\n    # should work fine
+HEAD / HTTP/1.1\n\n\n    # should work fine
+HEAD / HTTP/2.0\n\n\n    # potential to pass as true
+HEAD / HTTP/3.0\n\n\n    # should break something
+OPTIONS / HTTP/1.0\n\n\n # should work fine
 EOF
 fi
 
