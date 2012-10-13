@@ -24,8 +24,7 @@ clear
   echo -e "\t3) Timing for the port scanning\n"
   echo -e "Usage: bash -e `basename $0` ~/somedir/target_ips.txt clients_name [1-5]:timing"
   echo -e "Example: bash -e `basename $0` /home/userX/targets.txt ACME_PHARM 4"
-Example: bash -e `basename $0` /home/userX/targets.txt ACME_PHARM 4\n\n"
-  exit $E_BADARGS
+exit $E_BADARGS
 else
  nmap -sTV -vvv -n -T `echo $3` -p- -P0 -A -oA `echo $2` -iL `echo $1`
 fi
