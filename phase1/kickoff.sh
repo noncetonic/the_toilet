@@ -11,18 +11,21 @@
 # Your milage may vary - like it or hate it, it simply works
 #
 
-if [ -z $1 ]; then
- echo -e "\n[*]  Cmd Structure: bash -e kickoff.sh ~/somedir/target_ips.txt clients_name [1-5]:timing"
- echo -e "[*]\tie: bash -e ./kickoff.sh /home/userX/targets.txt ACME_PHARM 4\n"
- exit
+EXPECTED_ARGS=3
+E_BADARGS=66
+
+if [ $# -ne $EXPECTED_ARGS ]
+then
+clear
+  echo -e "\n`basename $0`: Written by William SubINacls Coppola\n"
+  echo "This tool requires 3 arugments:"
+  echo -e "\t1) Target ip list"
+  echo -e "\t2) Clients Name"
+  echo -e "\t3) Timing for the port scanning\n"
+  echo -e "Usage: bash -e `basename $0` ~/somedir/target_ips.txt clients_name [1-5]:timing"
+  echo -e "Example: bash -e `basename $0` /home/userX/targets.txt ACME_PHARM 4"
+exit $E_BADARGS
 else
- if [ -z $2 ]; then
-  echo -e "\n[*] - { Read the source luke... }"
-  echo -e "[*]\tbash -e kickoff.sh ~/somedir/target_ips.txt clients_name [1-5]:timing"
-  echo -e "[*]\tie: bash -e ./kickoff.sh /home/userX/targets.txt ACME_PHARM 4\n"
-  exit
- else
-  nmap -sTV -vvv -n -T `echo $3` -p- -P0 -A -oA `echo $2` -iL `echo $1`
- fi
+ nmap -sTV -vvv -n -T `echo $3` -p- -P0 -A -oA `echo $2` -iL `echo $1`
 fi
 
