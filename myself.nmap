@@ -1,0 +1,324 @@
+# Nmap 6.00 scan initiated Sat Oct 13 13:20:05 2012 as: nmap -sTV -vvv -n -T 5 -p- -P0 -A -oA myself -iL local.txt
+Nmap scan report for 127.0.0.1
+Host is up (0.00022s latency).
+Scanned at 2012-10-13 13:20:06 EDT for 165s
+Not shown: 65528 closed ports
+PORT     STATE SERVICE        VERSION
+1241/tcp open  ssl/nessus?
+3389/tcp open  ms-wbt-server?
+3390/tcp open  dsc?
+3780/tcp open  ssl/unknown
+| ssl-cert: Subject: commonName=NeXpose Security Console/organizationName=Accuvant
+| Issuer: commonName=NeXpose Security Console/organizationName=Accuvant
+| Public Key type: rsa
+| Public Key bits: 2048
+| Not valid before: 2012-03-19 00:00:00
+| Not valid after:  2022-03-18 22:08:42
+| MD5:   4133 c884 a439 e5ef b7e4 038d 3ccc e263
+| SHA-1: e568 6d6d 7901 cda1 c25a 9478 a8d7 e35e 7e0a 082e
+| -----BEGIN CERTIFICATE-----
+| MIIC8DCCAdqgAwIBAAIQ9RepeLjKHxels68YDNCDvzALBgkqhkiG9w0BAQUwNjEh
+| MB8GA1UEAxMYTmVYcG9zZSBTZWN1cml0eSBDb25zb2xlMREwDwYDVQQKEwhBY2N1
+| dmFudDAeFw0xMjAzMTkwMDAwMDBaFw0yMjAzMTgyMjA4NDJaMDYxITAfBgNVBAMT
+| GE5lWHBvc2UgU2VjdXJpdHkgQ29uc29sZTERMA8GA1UEChMIQWNjdXZhbnQwggEi
+| MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCVuZhC+kJ+BN3VwRa4x+WD7G74
+| bF0dlZWUZSP/zyjCFbG+jfjQfKTnCamR/5x20yP5dvodq0nAO99v/kcNXNSjLG9n
+| aWP2qXepAXMiNBBgH2vze59Fq0dDdseRXlEqNch1BbIOiCAeJyJqigQu3lsjxcd6
+| 3aavWHBHqf/8jDwYM8k8UyoRE7AA+FHPiHTIOi6ytelYn4gmKjWGN9PZyj+HbcX+
+| R1/lTp9LKjOP/OG/EotP+FVyl3oDhD5p7TaJikHuU7LXDlkgz8m8EpSYgn51e0Un
+| KlLLepLrIgEk8nebq5YRErHPoZx6N6XHO7oXkprZG6HudyOjKE1PYd7kt46VAgMB
+| AAEwCwYJKoZIhvcNAQEFA4IBAQAfjbZJQbZM0FJfCxiDavaAi9bn5gVjcwUR6T3M
+| LJj/+4WYCihrb73GdcX/YkQ6oH3Ww8bgKMCbB6x7VcLCrnD6PCSl5wNtUO42KCAS
+| FI6XhCnMtOJCEI9L12dhR6PL6uN0ByMjc8UTyqQLPXUgI2OWCj4fxmvpAGwAMF6w
+| s6l/MLJDE/GDwmtu7+d0N0dKh5LkD8pWQtCHShzQohCQ7nLNNm4omdp4eZvXNnp+
+| M/dgr/xQWtBlR06+SnSVE0ktEoesD+QdlW8xpdaWTEpgui9Lhn9D0QtPYORCPVK/
+| SLWIDlIMvQGoySVbPJ4WVpE/SCHbTv0P4Q3r5X3kb/CKDmP9
+|_-----END CERTIFICATE-----
+5432/tcp open  postgresql     PostgreSQL DB 8.4.1 - 8.4.9
+7337/tcp open  postgresql     PostgreSQL DB 8.4.0
+8834/tcp open  ssl/unknown
+| ssl-cert: Subject: commonName=builder32-2/organizationName=Nessus Users United/stateOrProvinceName=NY/countryName=US/organizationalUnitName=Nessus Server/localityName=New York
+| Issuer: commonName=Nessus Certification Authority/organizationName=Nessus Users United/stateOrProvinceName=NY/countryName=US/organizationalUnitName=Nessus Certification Authority/localityName=New York
+| Public Key type: rsa
+| Public Key bits: 1024
+| Not valid before: 2011-05-10 07:54:17
+| Not valid after:  2012-05-09 07:54:17
+| MD5:   9057 1cb9 0dc6 9ef3 efae 6b08 1f38 b667
+| SHA-1: 11f9 01a2 9d22 fcd9 80fa 9d76 b95a f0ea 964a b632
+| -----BEGIN CERTIFICATE-----
+| MIICtDCCAh2gAwIBAgIDALE4MA0GCSqGSIb3DQEBBQUAMIGdMRwwGgYDVQQKExNO
+| ZXNzdXMgVXNlcnMgVW5pdGVkMScwJQYDVQQLEx5OZXNzdXMgQ2VydGlmaWNhdGlv
+| biBBdXRob3JpdHkxETAPBgNVBAcTCE5ldyBZb3JrMQswCQYDVQQGEwJVUzELMAkG
+| A1UECBMCTlkxJzAlBgNVBAMTHk5lc3N1cyBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0
+| eTAeFw0xMTA1MTAwNzU0MTdaFw0xMjA1MDkwNzU0MTdaMHkxHDAaBgNVBAoTE05l
+| c3N1cyBVc2VycyBVbml0ZWQxFjAUBgNVBAsTDU5lc3N1cyBTZXJ2ZXIxETAPBgNV
+| BAcTCE5ldyBZb3JrMQswCQYDVQQGEwJVUzELMAkGA1UECBMCTlkxFDASBgNVBAMT
+| C2J1aWxkZXIzMi0yMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDibimmD8+/
+| kbUZVcbB6egA2lQkAfU26dK5+UEFh+BgxjQE1QzhtUWXfQfBqhr0CxLpCU7ZM9k0
+| Vivf2wEfxfPZKxhOCFDbaFb5pR8XBTN/K02SafmvV6IHKpVJFVUCXKfQDW7wgVbY
+| yNoVMfXUoWtejltXgpweIsbNPb+ZemKrSwIDAQABoyUwIzARBglghkgBhvhCAQEE
+| BAMCBkAwDgYDVR0PAQH/BAQDAgXgMA0GCSqGSIb3DQEBBQUAA4GBAJTXsNsSPdLM
+| sV1+RsVqnxy6xCdDKAoKiNpqNIFQ9eFgMiO2XBVQRrERyFulb1nlAvmmxMv60/Hb
+| /I80b3wwkp4g3njuOL7pkjLF3ErU49bFbTjNneh/QP9qvLN5GmRhBHyDotfdNSzA
+| UabutxKwqE2bYGGnM+z2o7GkSt8ltHas
+|_-----END CERTIFICATE-----
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port3780-TCP:V=6.00%T=SSL%I=7%D=10/13%Time=5079A2DF%P=i686-pc-linux-gnu
+SF:%r(GetRequest,13A,"HTTP/1\.1\x20302\x20Moved\x20Temporarily\r\nSet-Cook
+SF:ie:\x20JSESSIONID=29B8F2EC98DC4F661F824131487CEBF0;\x20Path=/;\x20Secur
+SF:e;\x20HttpOnly\r\nDate:\x20Sat,\x2013\x20Oct\x202012\x2017:20:31\x20GMT
+SF:\r\nLocation:\x20/maintenance-login\.html\r\nContent-Type:\x20text/html
+SF:;charset=UTF-8\r\nContent-Length:\x200\r\nVary:\x20Accept-Encoding\r\nC
+SF:onnection:\x20close\r\nServer:\x20NSC/0\.6\.4\x20\(JVM\)\r\n\r\n")%r(HT
+SF:TPOptions,566,"HTTP/1\.1\x20403\x20Forbidden\r\nPragma:\x20No-cache\r\n
+SF:Cache-Control:\x20no-cache\r\nExpires:\x20Wed,\x2031\x20Dec\x201969\x20
+SF:19:00:00\x20EST\r\nContent-Type:\x20text/html;charset=utf-8\r\nContent-
+SF:Length:\x201108\r\nVary:\x20Accept-Encoding\r\nDate:\x20Sat,\x2013\x20O
+SF:ct\x202012\x2017:20:31\x20GMT\r\nConnection:\x20close\r\nServer:\x20NSC
+SF:/0\.6\.4\x20\(JVM\)\r\n\r\n<html><head><title>Apache\x20Tomcat/6\.0\.35
+SF:\x20-\x20Error\x20report</title><style><!--H1\x20{font-family:Tahoma,Ar
+SF:ial,sans-serif;color:white;background-color:#525D76;font-size:22px;}\x2
+SF:0H2\x20{font-family:Tahoma,Arial,sans-serif;color:white;background-colo
+SF:r:#525D76;font-size:16px;}\x20H3\x20{font-family:Tahoma,Arial,sans-seri
+SF:f;color:white;background-color:#525D76;font-size:14px;}\x20BODY\x20{fon
+SF:t-family:Tahoma,Arial,sans-serif;color:black;background-color:white;}\x
+SF:20B\x20{font-family:Tahoma,Arial,sans-serif;color:white;background-colo
+SF:r:#525D76;}\x20P\x20{font-family:Tahoma,Arial,sans-serif;background:whi
+SF:te;color:black;font-size:12px;}A\x20{color\x20:\x20black;}A\.name\x20{c
+SF:olo")%r(RTSPRequest,93,"HTTP/1\.1\x20505\x20HTTP\x20Version\x20Not\x20S
+SF:upported\r\nVary:\x20Accept-Encoding\r\nDate:\x20Sat,\x2013\x20Oct\x202
+SF:012\x2017:20:31\x20GMT\r\nConnection:\x20close\r\nServer:\x20NSC/0\.6\.
+SF:4\x20\(JVM\)\r\n\r\n")%r(Help,84,"HTTP/1\.1\x20400\x20Bad\x20Request\r\
+SF:nVary:\x20Accept-Encoding\r\nDate:\x20Sat,\x2013\x20Oct\x202012\x2017:2
+SF:0:47\x20GMT\r\nConnection:\x20close\r\nServer:\x20NSC/0\.6\.4\x20\(JVM\
+SF:)\r\n\r\n")%r(SSLSessionReq,84,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nV
+SF:ary:\x20Accept-Encoding\r\nDate:\x20Sat,\x2013\x20Oct\x202012\x2017:20:
+SF:47\x20GMT\r\nConnection:\x20close\r\nServer:\x20NSC/0\.6\.4\x20\(JVM\)\
+SF:r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port8834-TCP:V=6.00%T=SSL%I=7%D=10/13%Time=5079A2F0%P=i686-pc-linux-gnu
+SF:%r(GenericLines,1CC,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nDate:\x20Sat
+SF:,\x2013\x20Oct\x202012\x2017:20:48\x20GMT\r\nServer:\x20NessusWWW\r\nCo
+SF:nnection:\x20close\r\nExpires:\x20Sat,\x2013\x20Oct\x202012\x2017:20:48
+SF:\x20GMT\r\nContent-Length:\x20208\r\nContent-Type:\x20text/html\r\nX-Fr
+SF:ame-Options:\x20DENY\r\nCache-Control:\x20\r\nExpires:\x200\r\nPragma\x
+SF:20:\x20\r\n\r\n<!DOCTYPE\x20HTML\x20PUBLIC\x20\"-//IETF//DTD\x20HTML\x2
+SF:02\.0//EN\">\r\n<html><head>\r\n<title>400\x20Bad\x20Request</title></h
+SF:ead><body><h1>Bad\x20Request</h1><p>Your\x20client\x20sent\x20a\x20requ
+SF:est\x20this\x20server\x20does\x20not\x20understand</p></body></html>")%
+SF:r(GetRequest,8BE,"HTTP/1\.1\x20200\x20OK\r\nDate:\x20Sat,\x2013\x20Oct\
+SF:x202012\x2017:20:48\x20GMT\r\nServer:\x20NessusWWW\r\nConnection:\x20cl
+SF:ose\r\nExpires:\x20Sat,\x2013\x20Oct\x202012\x2017:20:48\x20GMT\r\nCont
+SF:ent-Length:\x201994\r\nContent-Type:\x20text/html\r\nX-Frame-Options:\x
+SF:20DENY\r\nCache-Control:\x20\r\nExpires:\x200\r\nPragma\x20:\x20\r\n\r\
+SF:n<!doctype\x20html>\n<html>\n\x20\x20<head>\n\x20\x20\x20\x20<meta\x20c
+SF:harset=\"utf-8\">\n\x20\x20\x20\x20<title>No\x20plugins</title>\n\x20\x
+SF:20</head>\n\x20\x20<body\x20bgcolor=\"#2b4e67\">\n\x20\x20<link\x20type
+SF:=\"text/css\"\x20href=\"jqueryui18\.css\"\x20rel=\"stylesheet\"\x20/>\n
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<script
+SF:\x20type=\"text/javascript\"\x20src=\"jqueryui18\.js\"></script>\n<div\
+SF:x20id=\"main\"></div>\n\n<script>\nvar\x20htmlScreen\x20=\n'<div\x20cla
+SF:ss=\"ui-widget\x20ui-form\">\x20<div\x20class=\"ui-widget-header\x20ui-
+SF:corner-all\">\x20\x20<img\x20src=\"NessusLogoScreen\.png\"/>\x20</div>\
+SF:x20<div\x20class=\"ui-widget-content\x20ui-corner-all\">\\\n<h2>No\x20p
+SF:lugins\x20are\x20installed</h2><h4>No\x20plugins\x20are\x20installed\.\
+SF:x20If\x20you\x20manage\x20Nessus\x20with\x20SecurityCenter,\x20connect\
+SF:x20to\x20the\x20SecurityCenter\x20console\x20and\x20make\x20sure\x20thi
+SF:s\x20scanner\x20i")%r(HTTPOptions,1D7,"HTTP/1\.1\x20405\x20Method\x20no
+SF:t\x20Allowed\r\nDate:\x20Sat,\x2013\x20Oct\x202012\x2017:20:48\x20GMT\r
+SF:\nServer:\x20NessusWWW\r\nConnection:\x20close\r\nExpires:\x20Sat,\x201
+SF:3\x20Oct\x202012\x2017:20:48\x20GMT\r\nContent-Length:\x20212\r\nConten
+SF:t-Type:\x20text/html\r\nX-Frame-Options:\x20DENY\r\nCache-Control:\x20\
+SF:r\nExpires:\x200\r\nPragma\x20:\x20\r\n\r\n<!DOCTYPE\x20HTML\x20PUBLIC\
+SF:x20\"-//IETF//DTD\x20HTML\x202\.0//EN\">\r\n<html><head>\r\n<title>405\
+SF:x20Method\x20not\x20Allowed</title></head><body><h1>Method\x20not\x20Al
+SF:lowed</h1><p>The\x20requested\x20method\x20is\x20not\x20allowed\x20for\
+SF:x20this\x20URL</p></body></html>");
+Device type: general purpose
+Running: Linux 2.6.X|3.X
+OS CPE: cpe:/o:linux:kernel:2.6 cpe:/o:linux:kernel:3
+OS details: Linux 2.6.32 - 3.2
+TCP/IP fingerprint:
+OS:SCAN(V=6.00%E=4%D=10/13%OT=1241%CT=1%CU=40382%PV=N%DS=0%DC=L%G=N%TM=5079
+OS:A389%P=i686-pc-linux-gnu)SEQ(SP=FC%GCD=1%ISR=100%TI=Z%CI=Z%II=I%TS=8)OPS
+OS:(O1=M400CST11NW4%O2=M400CST11NW4%O3=M400CNNT11NW4%O4=M400CST11NW4%O5=M40
+OS:0CST11NW4%O6=M400CST11)WIN(W1=8000%W2=8000%W3=8000%W4=8000%W5=8000%W6=80
+OS:00)ECN(R=Y%DF=Y%T=41%W=8018%O=M400CNNSNW4%CC=Y%Q=)T1(R=Y%DF=Y%T=41%S=O%A
+OS:=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=Y%DF=Y%T=41%W=8000%S=O%A=S+%F=AS%O=M400CST1
+OS:1NW4%RD=0%Q=)T4(R=Y%DF=Y%T=41%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=4
+OS:1%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=41%W=0%S=A%A=Z%F=R%O=%RD=0%
+OS:Q=)T7(R=Y%DF=Y%T=41%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=41%IPL=16
+OS:4%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=41%CD=S)
+
+Uptime guess: 8.725 days (since Thu Oct  4 19:59:00 2012)
+Network Distance: 0 hops
+TCP Sequence Prediction: Difficulty=252 (Good luck!)
+IP ID Sequence Generation: All zeros
+
+Nmap scan report for 0.0.0.0
+Host is up (0.0010s latency).
+Scanned at 2012-10-13 13:20:06 EDT for 195s
+Not shown: 65528 closed ports
+PORT     STATE SERVICE        VERSION
+1241/tcp open  ssl/nessus?
+3389/tcp open  ms-wbt-server?
+3390/tcp open  dsc?
+3780/tcp open  ssl/unknown
+| ssl-cert: Subject: commonName=NeXpose Security Console/organizationName=Accuvant
+| Issuer: commonName=NeXpose Security Console/organizationName=Accuvant
+| Public Key type: rsa
+| Public Key bits: 2048
+| Not valid before: 2012-03-19 00:00:00
+| Not valid after:  2022-03-18 22:08:42
+| MD5:   4133 c884 a439 e5ef b7e4 038d 3ccc e263
+| SHA-1: e568 6d6d 7901 cda1 c25a 9478 a8d7 e35e 7e0a 082e
+| -----BEGIN CERTIFICATE-----
+| MIIC8DCCAdqgAwIBAAIQ9RepeLjKHxels68YDNCDvzALBgkqhkiG9w0BAQUwNjEh
+| MB8GA1UEAxMYTmVYcG9zZSBTZWN1cml0eSBDb25zb2xlMREwDwYDVQQKEwhBY2N1
+| dmFudDAeFw0xMjAzMTkwMDAwMDBaFw0yMjAzMTgyMjA4NDJaMDYxITAfBgNVBAMT
+| GE5lWHBvc2UgU2VjdXJpdHkgQ29uc29sZTERMA8GA1UEChMIQWNjdXZhbnQwggEi
+| MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCVuZhC+kJ+BN3VwRa4x+WD7G74
+| bF0dlZWUZSP/zyjCFbG+jfjQfKTnCamR/5x20yP5dvodq0nAO99v/kcNXNSjLG9n
+| aWP2qXepAXMiNBBgH2vze59Fq0dDdseRXlEqNch1BbIOiCAeJyJqigQu3lsjxcd6
+| 3aavWHBHqf/8jDwYM8k8UyoRE7AA+FHPiHTIOi6ytelYn4gmKjWGN9PZyj+HbcX+
+| R1/lTp9LKjOP/OG/EotP+FVyl3oDhD5p7TaJikHuU7LXDlkgz8m8EpSYgn51e0Un
+| KlLLepLrIgEk8nebq5YRErHPoZx6N6XHO7oXkprZG6HudyOjKE1PYd7kt46VAgMB
+| AAEwCwYJKoZIhvcNAQEFA4IBAQAfjbZJQbZM0FJfCxiDavaAi9bn5gVjcwUR6T3M
+| LJj/+4WYCihrb73GdcX/YkQ6oH3Ww8bgKMCbB6x7VcLCrnD6PCSl5wNtUO42KCAS
+| FI6XhCnMtOJCEI9L12dhR6PL6uN0ByMjc8UTyqQLPXUgI2OWCj4fxmvpAGwAMF6w
+| s6l/MLJDE/GDwmtu7+d0N0dKh5LkD8pWQtCHShzQohCQ7nLNNm4omdp4eZvXNnp+
+| M/dgr/xQWtBlR06+SnSVE0ktEoesD+QdlW8xpdaWTEpgui9Lhn9D0QtPYORCPVK/
+| SLWIDlIMvQGoySVbPJ4WVpE/SCHbTv0P4Q3r5X3kb/CKDmP9
+|_-----END CERTIFICATE-----
+5432/tcp open  postgresql     PostgreSQL DB 8.4.1 - 8.4.9
+7337/tcp open  postgresql     PostgreSQL DB 8.4.0
+8834/tcp open  ssl/unknown
+| ssl-cert: Subject: commonName=builder32-2/organizationName=Nessus Users United/stateOrProvinceName=NY/countryName=US/organizationalUnitName=Nessus Server/localityName=New York
+| Issuer: commonName=Nessus Certification Authority/organizationName=Nessus Users United/stateOrProvinceName=NY/countryName=US/organizationalUnitName=Nessus Certification Authority/localityName=New York
+| Public Key type: rsa
+| Public Key bits: 1024
+| Not valid before: 2011-05-10 07:54:17
+| Not valid after:  2012-05-09 07:54:17
+| MD5:   9057 1cb9 0dc6 9ef3 efae 6b08 1f38 b667
+| SHA-1: 11f9 01a2 9d22 fcd9 80fa 9d76 b95a f0ea 964a b632
+| -----BEGIN CERTIFICATE-----
+| MIICtDCCAh2gAwIBAgIDALE4MA0GCSqGSIb3DQEBBQUAMIGdMRwwGgYDVQQKExNO
+| ZXNzdXMgVXNlcnMgVW5pdGVkMScwJQYDVQQLEx5OZXNzdXMgQ2VydGlmaWNhdGlv
+| biBBdXRob3JpdHkxETAPBgNVBAcTCE5ldyBZb3JrMQswCQYDVQQGEwJVUzELMAkG
+| A1UECBMCTlkxJzAlBgNVBAMTHk5lc3N1cyBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0
+| eTAeFw0xMTA1MTAwNzU0MTdaFw0xMjA1MDkwNzU0MTdaMHkxHDAaBgNVBAoTE05l
+| c3N1cyBVc2VycyBVbml0ZWQxFjAUBgNVBAsTDU5lc3N1cyBTZXJ2ZXIxETAPBgNV
+| BAcTCE5ldyBZb3JrMQswCQYDVQQGEwJVUzELMAkGA1UECBMCTlkxFDASBgNVBAMT
+| C2J1aWxkZXIzMi0yMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDibimmD8+/
+| kbUZVcbB6egA2lQkAfU26dK5+UEFh+BgxjQE1QzhtUWXfQfBqhr0CxLpCU7ZM9k0
+| Vivf2wEfxfPZKxhOCFDbaFb5pR8XBTN/K02SafmvV6IHKpVJFVUCXKfQDW7wgVbY
+| yNoVMfXUoWtejltXgpweIsbNPb+ZemKrSwIDAQABoyUwIzARBglghkgBhvhCAQEE
+| BAMCBkAwDgYDVR0PAQH/BAQDAgXgMA0GCSqGSIb3DQEBBQUAA4GBAJTXsNsSPdLM
+| sV1+RsVqnxy6xCdDKAoKiNpqNIFQ9eFgMiO2XBVQRrERyFulb1nlAvmmxMv60/Hb
+| /I80b3wwkp4g3njuOL7pkjLF3ErU49bFbTjNneh/QP9qvLN5GmRhBHyDotfdNSzA
+| UabutxKwqE2bYGGnM+z2o7GkSt8ltHas
+|_-----END CERTIFICATE-----
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port3780-TCP:V=6.00%T=SSL%I=7%D=10/13%Time=5079A2DF%P=i686-pc-linux-gnu
+SF:%r(GetRequest,13A,"HTTP/1\.1\x20302\x20Moved\x20Temporarily\r\nSet-Cook
+SF:ie:\x20JSESSIONID=2D4F489F53DAFCF8F19B7F71F2189B9A;\x20Path=/;\x20Secur
+SF:e;\x20HttpOnly\r\nDate:\x20Sat,\x2013\x20Oct\x202012\x2017:20:31\x20GMT
+SF:\r\nLocation:\x20/maintenance-login\.html\r\nContent-Type:\x20text/html
+SF:;charset=UTF-8\r\nContent-Length:\x200\r\nVary:\x20Accept-Encoding\r\nC
+SF:onnection:\x20close\r\nServer:\x20NSC/0\.6\.4\x20\(JVM\)\r\n\r\n")%r(HT
+SF:TPOptions,566,"HTTP/1\.1\x20403\x20Forbidden\r\nPragma:\x20No-cache\r\n
+SF:Cache-Control:\x20no-cache\r\nExpires:\x20Wed,\x2031\x20Dec\x201969\x20
+SF:19:00:00\x20EST\r\nContent-Type:\x20text/html;charset=utf-8\r\nContent-
+SF:Length:\x201108\r\nVary:\x20Accept-Encoding\r\nDate:\x20Sat,\x2013\x20O
+SF:ct\x202012\x2017:20:31\x20GMT\r\nConnection:\x20close\r\nServer:\x20NSC
+SF:/0\.6\.4\x20\(JVM\)\r\n\r\n<html><head><title>Apache\x20Tomcat/6\.0\.35
+SF:\x20-\x20Error\x20report</title><style><!--H1\x20{font-family:Tahoma,Ar
+SF:ial,sans-serif;color:white;background-color:#525D76;font-size:22px;}\x2
+SF:0H2\x20{font-family:Tahoma,Arial,sans-serif;color:white;background-colo
+SF:r:#525D76;font-size:16px;}\x20H3\x20{font-family:Tahoma,Arial,sans-seri
+SF:f;color:white;background-color:#525D76;font-size:14px;}\x20BODY\x20{fon
+SF:t-family:Tahoma,Arial,sans-serif;color:black;background-color:white;}\x
+SF:20B\x20{font-family:Tahoma,Arial,sans-serif;color:white;background-colo
+SF:r:#525D76;}\x20P\x20{font-family:Tahoma,Arial,sans-serif;background:whi
+SF:te;color:black;font-size:12px;}A\x20{color\x20:\x20black;}A\.name\x20{c
+SF:olo")%r(RTSPRequest,93,"HTTP/1\.1\x20505\x20HTTP\x20Version\x20Not\x20S
+SF:upported\r\nVary:\x20Accept-Encoding\r\nDate:\x20Sat,\x2013\x20Oct\x202
+SF:012\x2017:20:31\x20GMT\r\nConnection:\x20close\r\nServer:\x20NSC/0\.6\.
+SF:4\x20\(JVM\)\r\n\r\n")%r(Help,84,"HTTP/1\.1\x20400\x20Bad\x20Request\r\
+SF:nVary:\x20Accept-Encoding\r\nDate:\x20Sat,\x2013\x20Oct\x202012\x2017:2
+SF:0:47\x20GMT\r\nConnection:\x20close\r\nServer:\x20NSC/0\.6\.4\x20\(JVM\
+SF:)\r\n\r\n")%r(SSLSessionReq,84,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nV
+SF:ary:\x20Accept-Encoding\r\nDate:\x20Sat,\x2013\x20Oct\x202012\x2017:20:
+SF:47\x20GMT\r\nConnection:\x20close\r\nServer:\x20NSC/0\.6\.4\x20\(JVM\)\
+SF:r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port8834-TCP:V=6.00%T=SSL%I=7%D=10/13%Time=5079A2F0%P=i686-pc-linux-gnu
+SF:%r(GenericLines,1CC,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nDate:\x20Sat
+SF:,\x2013\x20Oct\x202012\x2017:20:48\x20GMT\r\nServer:\x20NessusWWW\r\nCo
+SF:nnection:\x20close\r\nExpires:\x20Sat,\x2013\x20Oct\x202012\x2017:20:48
+SF:\x20GMT\r\nContent-Length:\x20208\r\nContent-Type:\x20text/html\r\nX-Fr
+SF:ame-Options:\x20DENY\r\nCache-Control:\x20\r\nExpires:\x200\r\nPragma\x
+SF:20:\x20\r\n\r\n<!DOCTYPE\x20HTML\x20PUBLIC\x20\"-//IETF//DTD\x20HTML\x2
+SF:02\.0//EN\">\r\n<html><head>\r\n<title>400\x20Bad\x20Request</title></h
+SF:ead><body><h1>Bad\x20Request</h1><p>Your\x20client\x20sent\x20a\x20requ
+SF:est\x20this\x20server\x20does\x20not\x20understand</p></body></html>")%
+SF:r(GetRequest,8BE,"HTTP/1\.1\x20200\x20OK\r\nDate:\x20Sat,\x2013\x20Oct\
+SF:x202012\x2017:20:48\x20GMT\r\nServer:\x20NessusWWW\r\nConnection:\x20cl
+SF:ose\r\nExpires:\x20Sat,\x2013\x20Oct\x202012\x2017:20:48\x20GMT\r\nCont
+SF:ent-Length:\x201994\r\nContent-Type:\x20text/html\r\nX-Frame-Options:\x
+SF:20DENY\r\nCache-Control:\x20\r\nExpires:\x200\r\nPragma\x20:\x20\r\n\r\
+SF:n<!doctype\x20html>\n<html>\n\x20\x20<head>\n\x20\x20\x20\x20<meta\x20c
+SF:harset=\"utf-8\">\n\x20\x20\x20\x20<title>No\x20plugins</title>\n\x20\x
+SF:20</head>\n\x20\x20<body\x20bgcolor=\"#2b4e67\">\n\x20\x20<link\x20type
+SF:=\"text/css\"\x20href=\"jqueryui18\.css\"\x20rel=\"stylesheet\"\x20/>\n
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<script
+SF:\x20type=\"text/javascript\"\x20src=\"jqueryui18\.js\"></script>\n<div\
+SF:x20id=\"main\"></div>\n\n<script>\nvar\x20htmlScreen\x20=\n'<div\x20cla
+SF:ss=\"ui-widget\x20ui-form\">\x20<div\x20class=\"ui-widget-header\x20ui-
+SF:corner-all\">\x20\x20<img\x20src=\"NessusLogoScreen\.png\"/>\x20</div>\
+SF:x20<div\x20class=\"ui-widget-content\x20ui-corner-all\">\\\n<h2>No\x20p
+SF:lugins\x20are\x20installed</h2><h4>No\x20plugins\x20are\x20installed\.\
+SF:x20If\x20you\x20manage\x20Nessus\x20with\x20SecurityCenter,\x20connect\
+SF:x20to\x20the\x20SecurityCenter\x20console\x20and\x20make\x20sure\x20thi
+SF:s\x20scanner\x20i")%r(HTTPOptions,1D7,"HTTP/1\.1\x20405\x20Method\x20no
+SF:t\x20Allowed\r\nDate:\x20Sat,\x2013\x20Oct\x202012\x2017:20:48\x20GMT\r
+SF:\nServer:\x20NessusWWW\r\nConnection:\x20close\r\nExpires:\x20Sat,\x201
+SF:3\x20Oct\x202012\x2017:20:48\x20GMT\r\nContent-Length:\x20212\r\nConten
+SF:t-Type:\x20text/html\r\nX-Frame-Options:\x20DENY\r\nCache-Control:\x20\
+SF:r\nExpires:\x200\r\nPragma\x20:\x20\r\n\r\n<!DOCTYPE\x20HTML\x20PUBLIC\
+SF:x20\"-//IETF//DTD\x20HTML\x202\.0//EN\">\r\n<html><head>\r\n<title>405\
+SF:x20Method\x20not\x20Allowed</title></head><body><h1>Method\x20not\x20Al
+SF:lowed</h1><p>The\x20requested\x20method\x20is\x20not\x20allowed\x20for\
+SF:x20this\x20URL</p></body></html>");
+Device type: general purpose
+Running (JUST GUESSING): Linux 2.6.X (90%), Excito Linux 2.6.X (87%)
+OS CPE: cpe:/o:linux:kernel:2.6.31 cpe:/o:linux:kernel:2.6.32
+OS fingerprint not ideal because: Timing level 5 (Insane) used
+Aggressive OS guesses: Linux 2.6.31 (90%), Linux 2.6.32 (87%), Linux 2.6.22 (85%)
+No exact OS matches for host (test conditions non-ideal).
+TCP/IP fingerprint:
+SCAN(V=6.00%E=4%D=10/13%OT=1241%CT=1%CU=%PV=N%DS=0%DC=L%G=N%TM=5079A389%P=i686-pc-linux-gnu)
+SEQ(SP=100%GCD=1%ISR=106%TI=Z%TS=8)
+OPS(O1=M400CST11NW4%O2=M400CST11NW4%O3=M400CNNT11NW4%O4=M400CST11NW4%O5=M400CST11NW4%O6=M400CST11)
+WIN(W1=8000%W2=8000%W3=8000%W4=8000%W5=8000%W6=8000)
+ECN(R=Y%DF=Y%TG=40%W=8018%O=M400CNNSNW4%CC=Y%Q=)
+T1(R=Y%DF=Y%TG=40%S=O%A=S+%F=AS%RD=0%Q=)
+T2(R=N)
+T3(R=Y%DF=Y%TG=40%W=8000%S=O%A=S+%F=AS%O=M400CST11NW4%RD=0%Q=)
+T4(R=N)
+T5(R=N)
+T6(R=N)
+T7(R=N)
+U1(R=N)
+IE(R=N)
+
+Uptime guess: 7.271 days (since Sat Oct  6 06:52:53 2012)
+Network Distance: 0 hops
+TCP Sequence Prediction: Difficulty=256 (Good luck!)
+IP ID Sequence Generation: All zeros
+
+Read data files from: /usr/local/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+# Nmap done at Sat Oct 13 13:23:21 2012 -- 2 IP addresses (2 hosts up) scanned in 197.22 seconds

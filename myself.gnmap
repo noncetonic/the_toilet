@@ -1,0 +1,7 @@
+# Nmap 6.00 scan initiated Sat Oct 13 13:20:05 2012 as: nmap -sTV -vvv -n -T 5 -p- -P0 -A -oA myself -iL local.txt
+# Ports scanned: TCP(65535;1-65535) UDP(0;) SCTP(0;) PROTOCOLS(0;)
+Host: 127.0.0.1 ()	Status: Up
+Host: 127.0.0.1 ()	Ports: 1241/open/tcp//ssl|nessus?///, 3389/open/tcp//ms-wbt-server?///, 3390/open/tcp//dsc?///, 3780/open/tcp/////, 5432/open/tcp//postgresql//PostgreSQL DB 8.4.1 - 8.4.9/, 7337/open/tcp//postgresql//PostgreSQL DB 8.4.0/, 8834/open/tcp/////	Ignored State: closed (65528)	OS: Linux 2.6.32 - 3.2	Seq Index: 252	IP ID Seq: All zeros
+Host: 0.0.0.0 ()	Status: Up
+Host: 0.0.0.0 ()	Ports: 1241/open/tcp//ssl|nessus?///, 3389/open/tcp//ms-wbt-server?///, 3390/open/tcp//dsc?///, 3780/open/tcp/////, 5432/open/tcp//postgresql//PostgreSQL DB 8.4.1 - 8.4.9/, 7337/open/tcp//postgresql//PostgreSQL DB 8.4.0/, 8834/open/tcp/////	Ignored State: closed (65528)	Seq Index: 256	IP ID Seq: All zeros
+# Nmap done at Sat Oct 13 13:23:21 2012 -- 2 IP addresses (2 hosts up) scanned in 197.22 seconds
