@@ -28,3 +28,5 @@ clear
 else
 nmap -sTV -vvv -n -T `echo $3` -p- -P0 -A -oA `echo $2` -iL `echo $1`
 fi
+
+# STILL IN THE WORKS OR WILL USE HELPER SCRIPTS >>> INSERT MORE SHIT HERE <<<

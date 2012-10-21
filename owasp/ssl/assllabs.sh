@@ -2,8 +2,19 @@
 #
 # (;,.Got tired of checking websites ssl certs by hand and made a tool.,;)
 #
+<<<<<<< HEAD
 echo "" > assllabs.csv
 echo "Tracking number,IP,Commonnames,Alternativenames,Prefixhandling,Validfrom,Validuntil,Key,Signaturealgorithm,ServerGatedCryptography,Weakkey(Debian),Issuer,NextIssuer,NextIssuer,Chainlength(size),Chainissues,ExtendedValidation,Revocationinformation,Revocationstatus,Trusted,,InsecureRenegotiation,,Compression,NextProtocolNegotiation,Sessionresumption,Sessiontickets,OCSPstapling,StrictTransportSecurity,RequiresclientRIsupport,Longhandshakeintolerance,TLSextensionintolerance,TLSversionintolerance,Testdate,Testduration,Serversignature,Serverhostname,PCIcompliant,FIPS-ready" >> assllabs.csv
+=======
+
+#
+# Does not support Mac OS X at this time, please use Linux
+#
+if [ "`uname`" == "Darwin" ];then
+ echo -e "You need to change sed to fit your environment with alias\nor grep the file and replace -r with -E"
+ exit
+fi
+>>>>>>> e5badd7086a5fc4227659dc93b3bc1fa44cc062d
 echo -e "\n[+] assllabs.sh - get your validation on like an 'ass'essor..."
 echo -e "[+] Written by: William SubINacls Coppola"
 echo -e "[+] Reason: Simply because I hate reports\n"
@@ -96,9 +107,12 @@ for res in $(ls *.assllabs.html);do
   fi
  fi
  echo ""
+<<<<<<< HEAD
  cat $res | strings | grep "class=" | grep -B1 Cell | tr -d "\t" | grep Cell | cut -d">" -f2 | cut -d "<" -f1 | sed -r "s/(.*)/\1,/g" | tr -d "\n" | sed -r "s/(.*),/\1\n/g" | sed -r "s/(\&\#45\;)/-/g"| sed -r "s/(\&\#47\;)/\//g"| sed -r "s/\&\#46\;/./g" | sed -r "s/\&\#42\;/*/g" | sed -r "s/\&\#32\;/ ,/g" | sed -r "s/\&\#40\;/(/g" | sed -r "s/\&\#41\;/)/g" | sed -r "s/\&\#90\;/_/g" | sed -r "s/\&\#43\;/+/g" | sed -r "s/\&\#58\;/:/g" |  sed -r "s/\&nbsp\;//g" | sed -r "s/,(.*)/`echo $count`,`echo $ipa`,\1/g" >> assllabs.csv
 
 
+=======
+>>>>>>> e5badd7086a5fc4227659dc93b3bc1fa44cc062d
  # echo -e "\t[*] Finished $res\n\n" # diagnostics
 done | sed -r "s/\[(.*)\] (.*)/\t\[\1\] \2/g"
 
