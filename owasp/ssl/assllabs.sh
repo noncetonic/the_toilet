@@ -2,6 +2,14 @@
 #
 # (;,.Got tired of checking websites ssl certs by hand and made a tool.,;)
 #
+
+#
+# Does not support Mac OS X at this time, please use Linux
+#
+if [ "`uname`" == "Darwin" ];then
+ echo -e "You need to change sed to fit your environment with alias\nor grep the file and replace -r with -E"
+ exit
+fi
 echo -e "\n[+] assllabs.sh - get your validation on like an 'ass'essor..."
 echo -e "[+] Written by: William SubINacls Coppola"
 echo -e "[+] Reason: Simply because I hate reports\n"
@@ -92,6 +100,6 @@ for res in $(ls *.assllabs.html);do
   fi
  fi
  echo ""
- # echo -e " \t[*] Finished $res\n\n" # diagnostics
+ # echo -e "\t[*] Finished $res\n\n" # diagnostics
 done | sed -r "s/\[(.*)\] (.*)/\t\[\1\] \2/g"
 echo -e "\nYEAH! It's  Mathmagical..\n"
