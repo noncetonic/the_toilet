@@ -17,8 +17,12 @@ for site in $(cat $1 | $sed's/(^"(.*)|(.*)"$)/\2\3/g' | sort -u); do
  #echo $site # diagnostics
  if [ ! -f $site.assllabs.html ];then
   echo -e "\t[<] Sending $site to SSLLABS to be checked from cache...."
-  #echo "wget -i 1 -w 1 -O /dev/null -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$site\&ignoreMismatch\=on "
-  wget -i 1 -w 1 -O /dev/null -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$site\&ignoreMismatch\=on 
+  if [ "$test" != "Darwin" ];then
+   #echo "wget -i 1 -w 1 -O /dev/null -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$site\&ignoreMismatch\=on "
+   wget -i 1 -w 1 -O /dev/null -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$site\&ignoreMismatch\=on 
+  else
+   curl -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$site\&ignoreMismatch\=on 2>/dev/null
+  fi
   nappy="Yes"
  fi
 done
@@ -31,8 +35,12 @@ for site in $(cat $1 |  $sed's/(^"(.*)|(.*)"$)/\2\3/g' | sort -u); do
  #echo $site # diagnostics
  if [ ! -f $site.assllabs.html ];then
   echo -e "\t[>] Gathering data from SSLLABS on: $site"
-  #echo "wget -i 1 -w 1 -O $site.assllabs.html -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$site\&ignoreMismatch\=on"
-  wget -i 1 -w 1 -O $site.assllabs.html -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$site\&ignoreMismatch\=on
+  if [ "$test" != "Darwin" ];then
+   #echo "wget -i 1 -w 1 -O $site.assllabs.html -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$site\&ignoreMismatch\=on"
+   wget -i 1 -w 1 -O $site.assllabs.html -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$site\&ignoreMismatch\=on
+  else
+   curl -o $site.assllabs.html https://www.ssllabs.com/ssltest/analyze.html?d\=$site\&ignoreMismatch\=on 2>/dev/null
+  fi
  fi
 done
 for res in $(ls | grep html | sort -u);do 
@@ -53,8 +61,12 @@ for res in $(ls | grep html | sort -u);do
    for nsite in $rsipa; do
     #echo $nsite # diagnostics
     echo -e "\t[<] Sending $nsite to SSLLABS to be checked ...."
-    #echo "wget -i 1 -w 1 -O /dev/null -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$Server\&s\=$nsite\&ignoreMismatch\=on"
-    wget -i 1 -w 1 -O /dev/null -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$Server\&s\=$nsite\&ignoreMismatch\=on
+    if [ "$test" != "Darwin" ];then
+     #echo "wget -i 1 -w 1 -O /dev/null -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$Server\&s\=$nsite\&ignoreMismatch\=on"
+     wget -i 1 -w 1 -O /dev/null -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$Server\&s\=$nsite\&ignoreMismatch\=on
+    else
+     curl-o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$Server\&s\=$nsite\&ignoreMismatch\=on 2>/dev/null
+    fi
     nappy="Yes"
    done
    ttime=3
@@ -65,9 +77,13 @@ for res in $(ls | grep html | sort -u);do
    for nsite in $rsipa; do
     if [ ! -f $Server.$nsite.assllabs.html ];then
      #echo "$site.$nsite.assllabs.html "
-     echo -e "\t[>] Gathering data from: $Server  node: $nsite"
-     #echo "wget -i 1 -w 1 -O $Server.$nsite.assllabs.html -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$Server\&s\=$nsite\&ignoreMismatch\=on"
-     wget -i 1 -w 1 -O $Server.$nsite.assllabs.html -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$Server\&s\=$nsite\&ignoreMismatch\=on
+     if [ "$test" != "Darwin" ];then
+      echo -e "\t[>] Gathering data from: $Server  node: $nsite"
+      #echo "wget -i 1 -w 1 -O $Server.$nsite.assllabs.html -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$Server\&s\=$nsite\&ignoreMismatch\=on"
+      wget -i 1 -w 1 -O $Server.$nsite.assllabs.html -o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$Server\&s\=$nsite\&ignoreMismatch\=on
+     else
+      curl -o $Server.$nsite.assllabs.html https://www.ssllabs.com/ssltest/analyze.html?d\=$Server\&s\=$nsite\&ignoreMismatch\=on  2>/dev/null
+     fi
     fi
    done
   fi
@@ -91,7 +107,7 @@ for res in $(ls | grep html | sort -u);do
  #echo $hostn # diagnostics
  sigin=$(cat $res | strings | tr -d "\t" | grep -E "class=" | grep -A1 "Server signature" | $sed"s/(\&\#45\;)/-/g"| $sed"s/(\&\#47\;)/\//g"| $sed"s/\&\#46\;/./g" | $sed"s/\&\#42\;/*/g" | $sed"s/\&\#32\;/ ,/g" | $sed"s/\&\#40\;/(/g" | $sed"s/\&\#41\;/)/g" | $sed"s/\&\#90\;/_/g" | $sed"s/\&\#43\;/+/g" | cut -d ">" -f2 | $sed"s/^ (.*)/\1/g"| $sed"s/<(.*)/,,,/g" | tr -d "\n" | $sed"s/([0-9A-Za-z., ]{1,}),,,(.*),,,/ `echo $Server` Identified as: \2\n/g" | awk -F " "  '{print "[-] "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8}' | $sed"s/((Server) |signatur)//g")
  #echo $sigin # diagnostics
- #echo $rate # diagnostics 
+ #echo $rate # diagnostics	
  echo -e "\n{$count} - Examining records from `echo $res| $sed's/((.*)\.assllabs\.html)/\2/g'`"
  echo ""
  if [ "$rate" != "" ];then
