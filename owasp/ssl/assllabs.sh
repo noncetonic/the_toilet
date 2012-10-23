@@ -6,11 +6,8 @@ test=`uname`
 if [ "$test" == "Darwin" ];then
  sed="sed -E "
 else
- sed="sed -r " 
-<<<<<<< HEAD
+ sed="sed -r "
 fi
-=======
->>>>>>> ba15ac776a23f5c9a72c16c6dbe27f04be7c09a9
 echo -e "\n[+] assllabs.sh - get your validation on like an 'ass'essor..."
 echo -e "[+] Written by: William SubINacls Coppola"
 echo -e "[+] Reason: Simply because I hate reports\n"
