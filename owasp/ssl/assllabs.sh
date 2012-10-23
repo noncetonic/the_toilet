@@ -2,25 +2,17 @@
 #
 # (;,.Got tired of checking websites ssl certs by hand and made a tool.,;)
 #
-echo -e "\n[+] assllabs.sh - get your validation on like an 'ass'essor..."
-echo -e "[+] Written by: William SubINacls Coppola"
-echo -e "[+] Reason: Simply because I hate reports\n"
-version=`echo -e "\t\t[!] version: 0.01a"`
 test=`uname`
 if [ "$test" == "Darwin" ];then
  sed="sed -E "
 else
  sed="sed -r " 
-fi
 echo -e "\n[+] assllabs.sh - get your validation on like an 'ass'essor..."
 echo -e "[+] Written by: William SubINacls Coppola"
 echo -e "[+] Reason: Simply because I hate reports\n"
 echo "" > assllabs.csv
 echo "Tracking number,IP,Commonnames,Alternativenames,Prefixhandling,Validfrom,Validuntil,Key,Signaturealgorithm,ServerGatedCryptography,Weakkey(Debian),Issuer,NextIssuer,NextIssuer,Chainlength(size),Chainissues,ExtendedValidation,Revocationinformation,Revocationstatus,Trusted,,InsecureRenegotiation,,Compression,NextProtocolNegotiation,Sessionresumption,Sessiontickets,OCSPstapling,StrictTransportSecurity,RequiresclientRIsupport,Longhandshakeintolerance,TLSextensionintolerance,TLSversionintolerance,Testdate,Testduration,Serversignature,Serverhostname,PCIcompliant,FIPS-ready" >> assllabs.csv
-echo -e "\n[+] assllabs.sh - get your validation on like an 'ass'essor..."
-echo -e "[+] Written by: William SubINacls Coppola"
-echo -e "[+] Reason: Simply because I hate reports\n"
-for site in $(cat $1 |  $sed's/(^"(.*)|(.*)"$)/\2\3/g' | sort -u); do
+for site in $(cat $1 | $sed's/(^"(.*)|(.*)"$)/\2\3/g' | sort -u); do
  #echo $site # diagnostics
  if [ ! -f $site.assllabs.html ];then
   echo -e "\t[<] Sending $site to SSLLABS to be checked from cache...."
@@ -184,4 +176,5 @@ for res in $(ls | grep html | sort -u);do
  cat $res | strings | grep "class=" | grep -B1 Cell | tr -d "\t" | grep Cell | cut -d">" -f2 | cut -d "<" -f1 | $sed"s/(.*)/\1,/g" | tr -d "\n" | $sed"s/(.*),/\1\n/g" | $sed"s/(\&\#45\;)/-/g"| $sed"s/(\&\#47\;)/\//g"| $sed"s/\&\#46\;/./g" | $sed"s/\&\#42\;/*/g" | $sed"s/\&\#32\;/ ,/g" | $sed"s/\&\#40\;/(/g" | $sed"s/\&\#41\;/)/g" | $sed"s/\&\#90\;/_/g" | $sed"s/\&\#43\;/+/g" | $sed"s/\&\#58\;/:/g" |  $sed"s/\&nbsp\;//g" | $sed"s/,(.*)/`echo $count`,`echo $ipa`,\1/g" >> assllabs.csv
  # echo -e "\t[*] Finished $res\n\n" # diagnostics
 done | $sed"s/\[(.*)\] (.*)/\t\[\1\] \2/g"
+
 echo -e "\nYEAH! It's  Mathmagical..\n"
