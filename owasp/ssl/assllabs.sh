@@ -10,10 +10,13 @@ else
 fi
 
 if [ -z $1 ]; then
- echo -e "\n\t[*] No file with domain names supplied ...\n\n"
+ echo -e "Exit: System Error %1"
+ echo -e "\t\t%% End User variable not supplied %%"
+ echo -e "\nWelcome to the help menu, you ... guy .. you ..."
+ echo -e "\n\t[*] No file with domain names supplied ...\n"
  echo -e "\t\t[!] Issues request to SSLLABS to check supplied domains for faults."
  echo -e "\t\t[!] One domain per line in this format: {sub-domain}{domain}{tld}"
- echo -e "\n\t[*] ex: bash -e ./$0 ./your-dnsnames.txt"
+ echo -e "\n\t[*] ex: bash -e $0 ./your-dnsnames.txt"
  echo -e "\t\t[!] Will make files inside the directory where run."
  echo -e "\t\t[!] File: assllabs.csv will be overwritten if not archived\n"
  exit 0
@@ -80,12 +83,12 @@ for res in $(ls | grep html | sort -u);do
     else
      curl-o /dev/null https://www.ssllabs.com/ssltest/analyze.html?d\=$Server\&s\=$nsite\&ignoreMismatch\=on 2>/dev/null
     fi
-    nappy="Yes"
+    #nappy="Yes"
    done
    #ttime=3
-   #ttime=$( echo "`echo $rsipa | wc -l` * 30" | bc)
-   #echo -e "\t\t[!] Sleeping a total time of: $ttime"
-   #sleep $ttime
+   ttime=$( echo "`echo $rsipa | wc -l` * 30" | bc)
+   echo -e "\t\t[!] Sleeping a total time of: $ttime"
+   sleep $ttime
    #echo $Server  # diagnostics
    for nsite in $rsipa; do
     if [ ! -f $Server.$nsite.assllabs.html ];then
