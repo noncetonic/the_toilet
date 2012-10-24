@@ -13,6 +13,7 @@ if [ -z $1 ]; then
  echo -e "Exit: System Error %1"
  echo -e "\t\t%% End User variable not supplied %%"
  echo -e "\nWelcome to the help menu, you ... guy .. you ..."
+ echo -e "\n\t[*] No file with domain names supplied ...\n"
  echo -e "\t\t[!] Issues request to SSLLABS to check supplied domains for faults."
  echo -e "\t\t[!] One domain per line in this format: {sub-domain}{domain}{tld}"
  echo -e "\n\t[*] ex: bash -e $0 ./your-dnsnames.txt"
