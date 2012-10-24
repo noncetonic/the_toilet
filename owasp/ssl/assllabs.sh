@@ -8,6 +8,17 @@ if [ "$test" == "Darwin" ];then
 else
  sed="sed -r "
 fi
+
+if [ -z $1 ]; then
+ echo -e "\n\t[*] No file with domain names supplied ...\n\n"
+ echo -e "\t\t[!] Issues request to SSLLABS to check supplied domains for faults."
+ echo -e "\t\t[!] One domain per line in this format: {sub-domain}{domain}{tld}"
+ echo -e "\n\t[*] ex: bash -e ./$0 ./your-dnsnames.txt"
+ echo -e "\t\t[!] Will make files inside the directory where run."
+ echo -e "\t\t[!] File: assllabs.csv will be overwritten if not archived\n"
+ exit 0
+fi
+
 echo -e "\n[+] assllabs.sh - get your validation on like an 'ass'essor..."
 echo -e "[+] Written by: William SubINacls Coppola"
 echo -e "[+] Reason: Simply because I hate reports\n"
@@ -26,10 +37,12 @@ for site in $(cat $1 | $sed's/(^"(.*)|(.*)"$)/\2\3/g' | sort -u); do
   nappy="Yes"
  fi
 done
-ttime=3
-#ttime=$( echo "`echo $rsipa | wc -l` * 30" | bc)
-echo -e "\t\t[!]Sleeping a total time of: $ttime"
-sleep $ttime
+#ttime=3
+#if [ "$nappy" == "Yes" ];then
+# ttime=$( echo "`echo $rsipa | wc -l` * 30" | bc)
+# echo -e "\t\t[!] Sleeping a total time of: $ttime"
+# sleep $ttime
+#fi
 head -n1 < /dev/null
 for site in $(cat $1 |  $sed's/(^"(.*)|(.*)"$)/\2\3/g' | sort -u); do
  #echo $site # diagnostics
@@ -53,7 +66,7 @@ for res in $(ls | grep html | sort -u);do
  #echo $spa # diagnostics
  #echo $rsipa # diagnostics
  if [ "$ipa" != "" ];then
-  #echo $ipa # diagnostics
+  # echo $ipa # diagnostics
   head -n1 < /dev/null
  else
   if [ "$rsipa" != "" ];then
@@ -69,10 +82,10 @@ for res in $(ls | grep html | sort -u);do
     fi
     nappy="Yes"
    done
-   ttime=3
+   #ttime=3
    #ttime=$( echo "`echo $rsipa | wc -l` * 30" | bc)
-   echo -e "\t\t[!]Sleeping a total time of: $ttime"
-   sleep $ttime
+   #echo -e "\t\t[!] Sleeping a total time of: $ttime"
+   #sleep $ttime
    #echo $Server  # diagnostics
    for nsite in $rsipa; do
     if [ ! -f $Server.$nsite.assllabs.html ];then
@@ -95,9 +108,10 @@ count="0"
 #echo "testme" # diagnostics
 for res in $(ls | grep html | sort -u);do 
  #echo $res # diagnostics
- Server=`echo $res | $sed's/((.*)(\.assllabs.html))/\2/g'`
+ ipa=`cat $res | strings | tr -d "\t" | grep -E "class=ip" | cut -d "(" -f2 | cut -d ")" -f1 | $sed"s/(\&\#45\;)/-/g"| $sed"s/(\&\#47\;)/\//g"| $sed"s/\&\#46\;/./g" | $sed"s/\&\#42\;/*/g" | $sed"s/\&\#32\;/ ,/g" | $sed"s/\&\#40\;/(/g" | $sed"s/\&\#41\;/)/g" | $sed"s/\&\#90\;/_/g" | $sed"s/\&\#43\;/+/g" | cut -d " " -f1` 
+ Server=$(echo $res | $sed's/((.*)(\.(([0-9]{1,3}\.){3}([0-9]{1,3})|assllabs.html)))/\2/g' | $sed"s/((.*)(\.([0-9]{1,3}\.){3}([0-9]{1,3})))/\2/g")
  #echo $Server # diagnostics
- Server=`echo $res | $sed's/((.*)(\.assllabs.html))/\2/g'`
+ rserver=`echo $res | $sed's/((.*)\.(([0-9]{1,3}\.){3}([0-9]{1,3}))\.(.*))/\3/g'| grep -v -E "([0-9]{1,3}\.){3}\.([0-9])"`
  let count=count+1
  rate=`cat $res | strings | tr -d "\t" | grep -E "class=" | grep rating_ | cut -d ">" -f2  |cut -d"<" -f1`
  #echo $count # diagnostics
@@ -106,9 +120,15 @@ for res in $(ls | grep html | sort -u);do
  hostn=$(cat $res | tr -d "\t" | grep -E "class=" | grep -A1 "Server hostname" | $sed"s/(\&\#45\;)/-/g"| $sed"s/(\&\#47\;)/\//g"| $sed"s/\&\#46\;/./g" | $sed"s/\&\#42\;/*/g" | $sed"s/\&\#32\;/ ,/g" | $sed"s/\&\#40\;/(/g" | $sed"s/\&\#41\;/)/g" | $sed"s/\&\#90\;/_/g" | $sed"s/\&\#43\;/+/g"| cut -d ">" -f2 | $sed"s/^ (.*)/\1/g"| $sed"s/<(.*)/,,,/g" | tr -d "\n" | $sed"s/([0-9A-Za-z.,]{1,}),,,(.*),,,/ `echo $Server` path origin: \2\n/g" | awk -F " " '{print "[-] "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8}' | $sed"s/((Server )|hostnam)//g")
  #echo $hostn # diagnostics
  sigin=$(cat $res | strings | tr -d "\t" | grep -E "class=" | grep -A1 "Server signature" | $sed"s/(\&\#45\;)/-/g"| $sed"s/(\&\#47\;)/\//g"| $sed"s/\&\#46\;/./g" | $sed"s/\&\#42\;/*/g" | $sed"s/\&\#32\;/ ,/g" | $sed"s/\&\#40\;/(/g" | $sed"s/\&\#41\;/)/g" | $sed"s/\&\#90\;/_/g" | $sed"s/\&\#43\;/+/g" | cut -d ">" -f2 | $sed"s/^ (.*)/\1/g"| $sed"s/<(.*)/,,,/g" | tr -d "\n" | $sed"s/([0-9A-Za-z., ]{1,}),,,(.*),,,/ `echo $Server` Identified as: \2\n/g" | awk -F " "  '{print "[-] "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8}' | $sed"s/((Server) |signatur)//g")
+ ipa=`cat $res | strings | tr -d "\t" | grep -E "class=ip" | cut -d "(" -f2 | cut -d ")" -f1 | $sed"s/(\&\#45\;)/-/g"| $sed"s/(\&\#47\;)/\//g"| $sed"s/\&\#46\;/./g" | $sed"s/\&\#42\;/*/g" | $sed"s/\&\#32\;/ ,/g" | $sed"s/\&\#40\;/(/g" | $sed"s/\&\#41\;/)/g" | $sed"s/\&\#90\;/_/g" | $sed"s/\&\#43\;/+/g" | cut -d " " -f1`
+
  #echo $sigin # diagnostics
- #echo $rate # diagnostics	
- echo -e "\n{$count} - Examining records from `echo $res| $sed's/((.*)\.assllabs\.html)/\2/g'`"
+ #echo $rate # diagnostics
+ if [ "$rserver" == "" ];then
+  echo -e "\n{$count} - Examining records from $Server"
+ else
+  echo -e "\n{$count} - Examining records from $Server node $ipa"
+ fi
  echo ""
  if [ "$rate" != "" ];then
   echo "[-] $Server is rated at: $rate"
@@ -128,16 +148,21 @@ for res in $(ls | grep html | sort -u);do
  if [ "$altn" != "" ];then
   if [ "$altn" != "-" ];then
    echo -e "[-] $Server alter name(s): $altn"
+  fi
  else 
   head -n1 < /dev/null
  fi
+ #echo $rserver
+ #echo $Server
+ if [ "`echo $rserver | $sed's/(.*)\.assllabs\.html/\1/g'`" != "" ];then
+  if [ "`echo $rserver | $sed's/(.*)\.assllabs\.html/\1/g'`" != " " ];then
+    if [ "`echo $rserver | $sed's/(.*)\.assllabs\.html/\1/g'`" != "$Server" ];then
+   #echo "[-] $Server has an Dns of: $rserver"
+    echo "[-] $Server has an IP of: $ipa"
+   fi
+  fi
  fi
- if [ "$ipa" != "" ];then
-  echo "[-] $Server has an IP of: $ipa"
- else
-  echo "[-] $Server has an IP of: $sipa"
- fi
- cstr=`cat $res | strings | tr -d "\t" | grep -E "class=" | grep -A1 "Common" | grep Cell | cut -d ">" -f4 | cut -d" " -f1 | $sed"s/(\&\#45\;)/-/g"| $sed"s/(\&\#47\;)/\//g"| $sed"s/\&\#46\;/./g" | $sed"s/\&\#42\;/*/g" | $sed"s/\&\#32\;/ ,/g" | $sed"s/\&\#40\;/(/g" | $sed"s/\&\#41\;/)/g" | $sed"s/\&\#90\;/_/g" | $sed"s/\&\#43\;/+/g"`
+ cstr=$(cat $res | strings | tr -d "\t" | grep -E "class=" | grep -A1 "Common" | grep Cell | cut -d ">" -f4 | cut -d" " -f1 | $sed"s/(\&\#45\;)/-/g"| $sed"s/(\&\#47\;)/\//g"| $sed"s/\&\#46\;/./g" | $sed"s/\&\#42\;/*/g" | $sed"s/\&\#32\;/ ,/g" | $sed"s/\&\#40\;/(/g" | $sed"s/\&\#41\;/)/g" | $sed"s/\&\#90\;/_/g" | $sed"s/\&\#43\;/+/g")
  #echo $cstr # diagnostics
  mstr=`cat $res | strings | tr -d "\t" | grep -E "class=" | grep -A1 "Common" | grep Cell | cut -d ">" -f6 | cut -d"<" -f1 | $sed"s/(\&\#45\;)/-/g"| $sed"s/(\&\#47\;)/\//g"| $sed"s/\&\#46\;/./g" | $sed"s/\&\#42\;/*/g" | $sed"s/\&\#32\;/ ,/g" | $sed"s/\&\#40\;/(/g" | $sed"s/\&\#41\;/)/g" | $sed"s/\&\#90\;/_/g" | $sed"s/\&\#43\;/+/g"`
  commn=$(echo "$Server common name: $cstr - $mstr") 
@@ -146,12 +171,12 @@ for res in $(ls | grep html | sort -u);do
  else 
   head -n1 < /dev/null
  fi
- if [ "`cat $res | strings | tr -d "\t" | grep -E "class=" | grep "<font color\=red>Insecure Renegotiation" | cut -d ">" -f3 | cut -d " " -f1`" = "Insecure" ]; then 
+ if [ "`cat $res | strings | tr -d "\t" | grep -E "class=" | grep "<font color\=red>Insecure Renegotiation" | cut -d ">" -f3 | cut -d " " -f1`" == "Insecure" ]; then 
   echo -e "\t[!] `echo $Server` has Insecure Renegotiation enabled "
  else 
   head -n1 < /dev/null
  fi
- if  [ "`cat $res | strings | tr -d "\t" | grep -E "font color=red" | cut -d">" -f2 | cut -d" " -f1 | grep BEAST`" = "BEAST" ]; then
+ if  [ "`cat $res | strings | tr -d "\t" | grep -E "font color=red" | cut -d">" -f2 | cut -d" " -f1 | grep BEAST`" == "BEAST" ]; then
   echo -e "\t[!] `echo $Server` is victim to BEAST Attacks"
  else 
   head -n1 < /dev/null
