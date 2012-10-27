@@ -7,7 +7,7 @@ test=`uname`
 if [ "$test" == "Darwin" ];then
  sed="sed -E "
 else
- sed="sed -r "
+ sed="$sed"
 fi
 
 if [ -z $1 ]; then
@@ -138,10 +138,10 @@ for res in $(ls | grep html | sort -u);do
  ipa=`cat $res | strings | tr -d "\t" | grep -E "class=ip" | cut -d "(" -f2 | cut -d ")" -f1 | $sed"s/(\&\#45\;)/-/g"| $sed"s/(\&\#47\;)/\//g"| $sed"s/\&\#46\;/./g" | $sed"s/\&\#42\;/*/g" | $sed"s/\&\#32\;/ ,/g" | $sed"s/\&\#40\;/(/g" | $sed"s/\&\#41\;/)/g" | $sed"s/\&\#90\;/_/g" | $sed"s/\&\#43\;/+/g" | cut -d " " -f1`
 
 
- afail=$(cat $res | tr -s " " | sed -r "s/( (.*))/\2/g"| grep "Assessment failed\:" | $sed"s/(\&\#45\;)/-/g"| $sed"s/(\&\#47\;)/\//g"| $sed"s/\&\#46\;/./g" | $sed"s/\&\#42\;/*/g" | $sed"s/\&\#32\;/ ,/g" | $sed"s/\&\#40\;/(/g" | $sed"s/\&\#41\;/)/g" | $sed"s/\&\#90\;/_/g" | $sed"s/\&\#43\;/+/g" | $sed"s/\&\#58;( ,(\&lt\;\&\#33\;[a-zA-Z]))//g" | $sed"s/ ,/ /g" | $sed"s/(.*)/ `echo "$Server"` : `echo "$nsite"` \1/g")
+ afail=$(cat $res | tr -s " " | $sed"s/( (.*))/\2/g"| grep "Assessment failed\:" | $sed"s/(\&\#45\;)/-/g"| $sed"s/(\&\#47\;)/\//g"| $sed"s/\&\#46\;/./g" | $sed"s/\&\#42\;/*/g" | $sed"s/\&\#32\;/ ,/g" | $sed"s/\&\#40\;/(/g" | $sed"s/\&\#41\;/)/g" | $sed"s/\&\#90\;/_/g" | $sed"s/\&\#43\;/+/g" | $sed"s/\&\#58;( ,(\&lt\;\&\#33\;[a-zA-Z]))//g" | $sed"s/ ,/ /g" | $sed"s/(.*)/ `echo "$Server"` : `echo "$nsite"` \1/g")
 
 
- sesres=`cat $res | tr -s " " | sed -r "s/( (.*))/\2/g"| grep -A1 "Session resumption" | grep red | tr -d "\t" | sed -r "s/((.*)red\>(.*)\>(.*))/\3/g" | sed -r "s/(|<(\/|)[a-zA-Z]{1,}|>|>)//g" | tr -s "\n" "-" | sed -r "s/\-/ \- /g" | cut -d "-" -f-2`
+ sesres=`cat $res | tr -s " " | $sed"s/( (.*))/\2/g"| grep -A1 "Session resumption" | grep red | tr -d "\t" | $sed"s/((.*)red\>(.*)\>(.*))/\3/g" | $sed"s/(|<(\/|)[a-zA-Z]{1,}|>|>)//g" | tr -s "\n" "-" | $sed"s/\-/ \- /g" | cut -d "-" -f-2`
  
  #echo $sigin # diagnostics
  #echo $rate # diagnostics
