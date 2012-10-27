@@ -36,7 +36,7 @@ done
 #echo $Server  # diagnostics
 if [ "$nappy" == "Yes"  ];then 
  #ntime=$( echo "`cat $ntime\.tmp\.tmp | wc -l` * 10 " | bc)
- ntime=1
+ ntime=150
  echo -e "\t\t[!] Sleeping a total time of: $ntime"
  sleep $ntime
  #echo $Server  # diagnostics
@@ -97,7 +97,7 @@ for res in $(ls | grep html | sort -u);do
  if [ "$sone" == "1" ];then
   if [ "$nappy" == "Yes"  ];then 
    #ntime=$( echo "`cat $ntime\.tmp\.tmp | wc -l` * 10 " | bc)
-   ntime=1
+   ntime=150
    echo -e "\t\t[!] Sleeping a total time of: $ntime"
    sleep $ntime
    #echo $Server  # diagnostics
