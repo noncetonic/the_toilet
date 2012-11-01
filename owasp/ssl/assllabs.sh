@@ -7,7 +7,7 @@ test=`uname`
 if [ "$test" == "Darwin" ];then
  sed="sed -E "
 else
- sed="$sed -r "
+ sed="sed -r "
 fi
 
 if [ -z $1 ]; then
