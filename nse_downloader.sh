@@ -5,15 +5,14 @@ select opt in "${options[@]}"
 do
  case $opt in
   "Download_all")
-   echo -e "\n[*] Downloading like a Boss\n"
+   echo -e "\n[*] Downloading all categories like a Boss\n"
    mkdir nmap
    cd nmap
    wget -q http://nmap.org/nsedoc/ 2>&1 /dev/null
    for x in $(cat index.html | grep '<td class\=\"name\"><a href\=\"' | sed -r 's/<td class\=\"name\"><a href\=\"//g' | cut -d '"' -f1 | tr -d "\t" | grep scripts | sed -r "s/(.*)/http\:\/\/nmap\.org\/nsedoc\/\1/"); do 
     wget -q $x 2>&1 /dev/null
    done
-
-
+   #
    for x in $(ls); do
     f=`echo $x | cut -d "." -f1`
     echo -e "\n-----------------------------------------------------\n"
