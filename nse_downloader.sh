@@ -1,11 +1,11 @@
 PS3=`echo -e "\n\t[+] Please enter your choice: \n"`
-options=("Download_all" "Categories" "Libraries" "Quit")
+options=("Scripts" "Categories" "Libraries" "Quit")
 echo -e "\n[*] Choose downloading options by numerical representation below\n"
 select opt in "${options[@]}"
 do
  case $opt in
-  "Download_all")
-   echo -e "\n[*] Downloading like a Boss\n"
+  "Scripts")
+   echo -e "\n[*] Downloading all Scripts like a Boss\n"
    mkdir nmap
    cd nmap
    wget -q http://nmap.org/nsedoc/ 2>&1 /dev/null
@@ -18,7 +18,7 @@ do
     echo -e "\n[*] Script Name: $f\n"
     awk -vRS="</pre>" '/<pre>/{gsub(/.*<pre>/,"");print}' $x | sed -r "s/^(nmap(.*))$/\1\n/g" | sed -r "s/\&lt\;/</g" | sed -r "s/\&gt\;/>/g" &
    done > $1
-   echo "1) Download_all"
+   echo "1) Scripts"
    echo "2) Categories"
    echo "3) Libraries"
    echo "4) Quit"
@@ -70,7 +70,7 @@ do
                echo -e "\n[*] Downloading the vuln category like a Boss\n"
                ;;
            "menu")
-               echo -e "\n1) Download_all"
+               echo -e "\n1) Scripts"
                echo "2) Categories"
                echo "3) Libraries"
                echo -e "4) Quit"
@@ -82,7 +82,7 @@ do
                ;;
            *) echo invalid option;;
        esac
-       echo "1) Download_all"
+       echo "1) Scripts"
        echo "2) Categories"
        echo "3) Libraries"
        echo -e "4) Quit"
