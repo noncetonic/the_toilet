@@ -7,6 +7,8 @@
 #
 # Feb 3, 2013
 
+echo -e "\n\t[*] Downloading like a boss\n"
+
 mkdir nmap
 cd nmap
 wget -q http://nmap.org/nsedoc/ 2>&1 /dev/null
@@ -14,12 +16,10 @@ for x in $(cat index.html | grep '<td class\=\"name\"><a href\=\"' | sed -r 's/<
  wget -q $x 2>&1 /dev/null
 done
 
-echo -e "\n\t[*] Downloading like a boss\n"
-
 for x in $(ls); do
  f=`echo $x | cut -d "." -f1`
  echo -e "\n-----------------------------------------------------\n"
  echo -e "\n[*] Script Name: $f\n"
  awk -vRS="</pre>" '/<pre>/{gsub(/.*<pre>/,"");print}' $x | sed -r "s/^(nmap(.*))$/\1\n/g" | sed -r "s/\&lt\;/</g" | sed -r "s/\&gt\;/>/g" &
-done > $1
+done > ../$1
 
