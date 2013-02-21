@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 if [ -z $1 ]; then
  echo -e "\n\t[*] Read the source luke ..."
  echo -e "Issues HEAD request to servers listed in file"
@@ -8,7 +9,6 @@ fi
 if [ ! -d ./ig004 ]; then
  mkdir ./ig004
 fi
-
 if [ -z $2 ]; then 
  for x in $(cat $1); do 
   if [ -f ./ig004/OWASP-IG-004_$x.txt ]; then
