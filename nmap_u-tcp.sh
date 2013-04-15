@@ -14,7 +14,7 @@ fi
 # check for proper parameters for application, only 2 required
 if [[ ! -z $3 ]];then
   echo -e "\n[-] Cmd Usage:\n"
-  echo -e "\t./nmap_me.sh ./your_port_list.txt ./your_host_list.txt\n"
+  echo -e "\t[*] bash -e $0 ./your_port_list.txt ./your_host_list.txt\n"
   exit
 fi
 
