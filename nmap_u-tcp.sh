@@ -33,11 +33,12 @@ fi
 # actual command to construct and execute
 if [[ ! -z $1  &&  ! -z $2 ]]; then
   if [[ -f $1  &&  -f $2 ]]; then
-    nmap -sCV -n -vvv -p `cat $1` -A -O -iL $2 -oA NMAP_UDP_SELECT_TCP-ALL_`pwd | cut -d"/" -f3`
+    if [ ! -d ./nmap ];then
+      mkdir ./nmap
+    fi
+    nmap -sCV --open -T5 -P0 -n -vvv -p `cat $1` -A -O -iL $2 -oA ./nmap/NMAP_UDP_TCP_`pwd | cut -d"/" -f3`
   fi
 else
   echo -e "\t[-] Application terminated with unknown error\n"
   exit
 fi
-
-# additional statements may follow
