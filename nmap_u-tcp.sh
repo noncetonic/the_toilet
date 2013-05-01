@@ -36,7 +36,8 @@ if [[ ! -z $1  &&  ! -z $2 ]]; then
     if [ ! -d ./nmap ];then
       mkdir ./nmap
     fi
-    nmap -sCV --open -T5 --min-parallelism=120 -P0 -n -vvv -p `cat $1` -A -O -iL $2 -oA ./nmap/NMAP_UDP_TCP_`pwd | cut -d"/" -f3`
+    nmap -sCV --open -T5 --min-parallelism=120 -P0 -n -vvv -p `cat $1` -A -O -iL $2 -oA ./nmap/NMAP_UDP_TCP_`pwd | cut -d"/" -f5`
+
   fi
 else
   echo -e "\t[-] Application terminated with unknown error\n"
