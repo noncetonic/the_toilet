@@ -5,7 +5,7 @@
 # echo -e "the lonely stoner seems to free his mind at night" |\
 # sed -r "s/(st(o)n(er)(.*)(at )(.*))/c\2d\3\4@\6 @@@\6/g"
 #
-# Use your own list of https web targets and it will test some vaerbs for http protocol to include junk
+# Use your own list of https web targets and it will test some verbs for http protocol to include junk
 # Which will reply to verbs which have no meaning in the protocol which could indicate verb tampering
 #
 
